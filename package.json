@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.5",
+    "fingerprint-generator": "^2.1.46",
+    "fingerprint-injector": "^2.1.46",
     "playwright": "^1.40.1"
   }
 }
