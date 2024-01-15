@@ -16,20 +16,22 @@ Para empezar, clona este repositorio en tu máquina local:
 
 Abre el archivo `config.json` y proporciona tu usuario y contraseña. Esto es necesario para autenticar tu cuenta antes de realizar búsquedas. Asegúrate de que el archivo `config.json` se vea así:
 
-````json
-{
-  "usuario": "tu_usuario",
-  "contrasena": "tu_contraseña"
-}```
+    {
+
+    "usuario": "tu_usuario",
+
+    "contrasena": "tu_contraseña"
+
+    }
 
 ### Instalar Dependencias
 
 Ejecuta el siguiente comando para instalar las dependencias necesarias:
+
 `npm install`
 
 ### Ejecutar el Script
+
 Finalmente, puedes ejecutar el script con el siguiente comando:
+
 `node index.js`
-
-
-````
