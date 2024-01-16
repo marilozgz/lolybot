@@ -10,8 +10,7 @@ function generateFingerprint() {
   })
 
   // Devuelve solo las partes relevantes para fingerprintOptions
-  return {
-    userAgent: fingerprint.navigator.userAgent,
-    screen: fingerprint.screen
-  }
+  return fingerprint
 }
+
+module.exports = generateFingerprint

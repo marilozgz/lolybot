@@ -3,19 +3,35 @@ const { newInjectedContext } = require("fingerprint-injector")
 
 const Login = require("./Login")
 const realizarBusquedas = require("./searchBing")
-const fingerprintOptions = require("./fingerPrint")
+const generateFingerprint = require("./fingerPrint")
+const config = require("./config.json") // Asegúrate de tener esta línea si config.json no está ya importado
 
 ;(async () => {
   const browser = await playwright.chromium.launch({ headless: false })
-  const context = await newInjectedContext(browser, {
+
+  const fingerprintOptions = generateFingerprint()
+  console.log(fingerprintOptions)
+
+  let contextOptions = {
     fingerprintOptions: fingerprintOptions,
-    newContextOptions: {
-      geolocation: {
-        //coordendas sevilla
-        latitude: 37.3886,
-        longitude: -5.9823
-      }
+    geolocation: {
+      // Coordenadas de Sevilla
+      latitude: 37.3886,
+      longitude: -5.9823
     }
+  }
+
+  if (config.isMobile) {
+    const mobileViewport = { width: 375, height: 667 } // Ejemplo de dimensiones para iPhone 6/7/8
+    contextOptions = {
+      ...contextOptions,
+      viewport: mobileViewport
+    }
+  }
+
+  const context = await newInjectedContext(browser, {
+    fingerprintOptions: contextOptions,
+    newContextOptions: contextOptions
   })
 
   const page = await context.newPage()
