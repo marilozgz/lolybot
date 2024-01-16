@@ -20,14 +20,18 @@ class Login {
         await page.waitForSelector(passwordSelector)
         await page.type(passwordSelector, config.password)
         await page.click(submitButtonSelector)
+        await page.click(submitButtonSelector)
+        await page.waitForTimeout(10000)
+        console.log("la ultima espera")
       } else {
         // Esperar 2 minutos si no hay contraseña
-        await page.waitForTimeout(120000) // 120000 ms = 2 minutos
+        await page.waitForTimeout(120000)
+        console.log("Esperando a que apruebes") // 120000 ms = 2 minutos
       }
 
       // Continuar con el proceso de autenticación después de la espera
-      await page.waitForTimeout(1000)
-      await page.click(submitButtonSelector)
+      await page.waitForTimeout(10000)
+      console.log("otra espera")
 
       this.log("Logged in successfully")
     } catch (error) {
